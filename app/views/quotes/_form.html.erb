@@ -1,0 +1,31 @@
+<%= form_with(model: quote, html: { class: 'flex flex-col space-y-4 p-4' }) do |form| %>
+  <% if quote.errors.any? %>
+    <div class="bg-red-100 text-red-700 p-4 rounded">
+      <h2 class="text-lg font-semibold mb-2">
+        <%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:
+      </h2>
+
+      <ul>
+        <% quote.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex items-center space-x-4 justify-center">
+    <%= form.text_field :name, placeholder: "Enter your quote", class: 'flex-1 p-2 border rounded-md' %>
+
+    <div class="flex items-center justify-between mt-4 gap-3">
+      <%= link_to quotes_path, class: 'bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600' do %>
+        <i class="fa-solid fa-xmark text-lg"></i>
+      <% end %>
+
+      <%= button_tag type: 'submit', class: 'btn-submit bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600' do %>
+        <i class="fa-solid fa-check text-lg"></i>
+      <% end %>
+    </div>
+  </div>
+
+  
+<% end %>
