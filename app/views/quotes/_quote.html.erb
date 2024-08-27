@@ -1,9 +1,11 @@
-<%= turbo_frame_tag quote do %>
-  <div class="quote">
+<div class='container '>
+  <%= turbo_frame_tag quote do %>
+  <div class="quote flex justify-between border border-gray-200 m-4">
     <%= link_to quote.name,
                 quote_path(quote),
                 data: { turbo_frame: "_top" } %>
-    <div class="quote__actions">
+
+    <div class="quote__actions flex gap-2">      
       <%= button_to "Delete",
                     quote_path(quote),
                     method: :delete,
@@ -14,3 +16,5 @@
     </div>
   </div>
 <% end %>
+
+</div>
